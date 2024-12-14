@@ -69,8 +69,29 @@
                                     <h2 data-slot="text-element" id="pageus-widget-text-element-01f0aa8b"
                                         class="pageus-widget-text-heading-01f0aa8b heading-title elementor-heading-title">
                                         <b>ATENÇÃO</b>: Tratamento com mais aprovação do Brasil, último dia com o preço
-                                        promocional: $date
+                                        promocional
                                     </h2>
+
+                                    <script>
+                                        // Função para formatar a data no padrão dd/MM/YYYY
+                                        function formatDate(date) {
+                                            const day = String(date.getDate()).padStart(2, '0');
+                                            const month = String(date.getMonth() + 1).padStart(2, '0'); // Janeiro é 0
+                                            const year = date.getFullYear();
+                                            return `${day}/${month}/${year}`;
+                                        }
+                                
+                                        // Obter o elemento pelo ID
+                                        const h2Element = document.getElementById('pageus-widget-text-element-01f0aa8b');
+                                
+                                        // Frase com a data atual formatada
+                                        const today = new Date();
+                                        const formattedDate = formatDate(today);
+                                        const newText = `<b>ATENÇÃO</b>: Tratamento com mais aprovação do Brasil, último dia com o preço promocional: ${formattedDate}`;
+                                
+                                        // Inserir o texto no elemento
+                                        h2Element.innerHTML = newText;
+                                    </script>
                                 </div>
                             </div>
                         </div>
@@ -976,7 +997,7 @@
                                         class="widget-image-figure-417ef48a widget-image-figure"><img
                                             data-slot="image-img" loading="lazy" width="0" height="0"
                                             class="widget-image-img-417ef48a"
-                                            src="https://utfs.io/f/ba914023-7f44-4e47-b3af-48bb88098729-lxr081.png"
+                                            src="wp-content/uploads/2024/12/Design sem nome.png"
                                             alt="doctor"
                                             style="border: none; height: 100%; display: inline-block; max-width: 100%; overflow: clip; text-align: center; border-radius: 0px; vertical-align: middle; overflow-clip-margin: content-box; width: 348px; opacity: 1;">
                                     </div>
@@ -2017,16 +2038,16 @@
                         <div id="pageus-populated-18df21e2" data-slot="null-populated"
                             class="pageus-populated-18df21e2 textAlign">
                             <div data-role="widget" data-role-type="image" data-slot="image-main" data-animation="false"
-                                id="pageus-widget-image-824853ee" class="pageus-widget-image-824853ee     widget-image">
-                                <div data-slot="widget-container" id="pageus-widget-image-container-824853ee"
-                                    class="pageus-widget-image-container-824853ee">
-                                    <a data-slot="image-link" href="https://ev.braip.com/ref?pl=pla4jlrv&ck=chewk951&af=afiyd2lq47">
+                                id="pageus-widget-image-340be3eb" class="pageus-widget-image-340be3eb     widget-image">
+                                <div data-slot="widget-container" id="pageus-widget-image-container-340be3eb"
+                                    class="pageus-widget-image-container-340be3eb">
+                                    <a data-slot="image-link" href="https://ev.braip.com/ref?pl=pla4jzm9&ck=chewk951&af=afiyd2lq47">
                                         <div data-slot="image-wrapper"
-                                            class="widget-image-figure-824853ee widget-image-figure"><img
+                                            class="widget-image-figure-340be3eb widget-image-figure"><img
                                                 data-slot="image-img" loading="lazy" width="0" height="0"
-                                                class="widget-image-img-824853ee"
-                                                src="https://utfs.io/f/2e1c1d52-d40a-44aa-8412-43d6a3fa1f39-gey8p0.png"
-                                                alt="3 MESES"
+                                                class="widget-image-img-340be3eb"
+                                                src="https://utfs.io/f/ecd1c78d-93db-49ee-aaeb-ef17283fedab-w5a6mi.png"
+                                                alt="12 meses"
                                                 style="border: none; height: 100%; display: inline-block; overflow: clip; text-align: center; border-radius: 0px; vertical-align: middle; overflow-clip-margin: content-box; width: 100%; max-width: 100%; opacity: 1;">
                                         </div>
                                     </a>
@@ -2049,16 +2070,16 @@
                                 </div>
                             </div>
                             <div data-role="widget" data-role-type="image" data-slot="image-main" data-animation="false"
-                                id="pageus-widget-image-340be3eb" class="pageus-widget-image-340be3eb     widget-image">
-                                <div data-slot="widget-container" id="pageus-widget-image-container-340be3eb"
-                                    class="pageus-widget-image-container-340be3eb">
-                                    <a data-slot="image-link" href="https://ev.braip.com/ref?pl=pla4jzm9&ck=chewk951&af=afiyd2lq47">
+                                id="pageus-widget-image-824853ee" class="pageus-widget-image-824853ee     widget-image">
+                                <div data-slot="widget-container" id="pageus-widget-image-container-824853ee"
+                                    class="pageus-widget-image-container-824853ee">
+                                    <a data-slot="image-link" href="https://ev.braip.com/ref?pl=pla4jlrv&ck=chewk951&af=afiyd2lq47">
                                         <div data-slot="image-wrapper"
-                                            class="widget-image-figure-340be3eb widget-image-figure"><img
+                                            class="widget-image-figure-824853ee widget-image-figure"><img
                                                 data-slot="image-img" loading="lazy" width="0" height="0"
-                                                class="widget-image-img-340be3eb"
-                                                src="https://utfs.io/f/ecd1c78d-93db-49ee-aaeb-ef17283fedab-w5a6mi.png"
-                                                alt="12 meses"
+                                                class="widget-image-img-824853ee"
+                                                src="https://utfs.io/f/2e1c1d52-d40a-44aa-8412-43d6a3fa1f39-gey8p0.png"
+                                                alt="3 MESES"
                                                 style="border: none; height: 100%; display: inline-block; overflow: clip; text-align: center; border-radius: 0px; vertical-align: middle; overflow-clip-margin: content-box; width: 100%; max-width: 100%; opacity: 1;">
                                         </div>
                                     </a>
@@ -2611,8 +2632,8 @@
                                 <div data-slot="widget-container" id="pageus-widget-text-container-738d35d0"
                                     class="pageus-widget-text-container-738d35d0">
                                     <h2 data-slot="text-element" id="pageus-widget-text-element-738d35d0"
-                                        class="pageus-widget-text-heading-738d35d0 heading-title">100 DORES © Todos os
-                                        direitos reservados - Xavier Informatica LTDA - 45.214.931/0001-20</h2>
+                                        class="pageus-widget-text-heading-738d35d0 heading-title">
+                                        100 DORES © Todos os direitos reservados <br><span style="color: black;">- Xavier Informatica LTDA - 45.214.931/0001-20</span></h2>
                                 </div>
                             </div>
                         </div>
