@@ -54,7 +54,7 @@
             localStorage.setItem('ht_ctc_storage', newValues);
         }
 
-        var ht_ctc_chat_var = {
+        /*var ht_ctc_chat_var = {
             "number": "5541999304429",
             "pre_filled": "Olá, vim do Kwai, sinto muitas dores, fiquei interessado e queria mais informações",
             //"dis_m": "show",
@@ -71,7 +71,28 @@
             "g_init": "default",
             "g_an_event_name": "click to chat",
             "pixel_event_name": "Click to Chat by HoliThemes"
-        };
+        };*/
+
+        var ht_ctc_chat_var = {
+            "number": "5541996627456",
+            "pre_filled": "Olá, vim do Kwai, sinto muitas dores, fiquei interessado e queria mais informações",
+            "dis_m": "show",
+            "dis_d": "show",
+            "css": "display: none; cursor: pointer; z-index: 99999999;",
+            //"pos_d": "position: fixed; bottom: 40px; right: 40px;",
+            //"pos_m": "position: fixed; bottom: 40px; right: 40px;",
+            "schedule": "no",
+            "se": "150",
+            "ani": "no-animation",
+            "url_structure_m": "wa_colon",
+            "url_target_d": "_blank",
+            "ga": "yes",
+            "fb": "yes",
+            "g_init": "default",
+            "g_an_event_name": "click to chat",
+            "pixel_event_name": "Click to Chat by HoliThemes"
+        }
+
         var ht_ctc_variables = {
             "g_an_event_name": "click to chat",
             "pixel_event_type": "trackCustom",
