@@ -74,7 +74,7 @@
         };*/
 
         var ht_ctc_chat_var = {
-            "number": "5541996627456",
+            "number": "5541999304429",
             "pre_filled": "Olá, vim do Kwai, sinto muitas dores, fiquei interessado e queria mais informações",
             "dis_m": "show",
             "dis_d": "show",
