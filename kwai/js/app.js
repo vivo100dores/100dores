@@ -212,6 +212,7 @@
         function ht_ctc() {
             console.log('ht_ctc');
             var ht_ctc_chat = document.querySelector('.ht-ctc-chat');
+            var ht_ctc_chats = document.getElementsByClassName('ht-ctc-chat');
             if (ht_ctc_chat) {
 
                 document.dispatchEvent(
@@ -219,10 +220,10 @@
                 );
 
                 // display
-                display_settings(ht_ctc_chat);
+                //display_settings(ht_ctc_chat);
 
                 // click
-                ht_ctc_chat.addEventListener('click', function () {
+                /*ht_ctc_chat.addEventListener('click', function () {
                     // ht_ctc_chat_greetings_box (ht_ctc_chat_greetings_box_link) is not exists..
 
                     if (!$('.ht_ctc_chat_greetings_box').length) {
@@ -230,7 +231,17 @@
                         // link
                         ht_ctc_link(ht_ctc_chat);
                     }
-                });
+                });*/
+                Array.from(ht_ctc_chats).forEach( chat => {
+                    display_settings(chat);
+                    chat.addEventListener('click', function () {   
+                        if (!$('.ht_ctc_chat_greetings_box').length) {
+                            console.log('no greetings dialog');
+                            // link
+                            ht_ctc_link(chat);
+                        }
+                    });
+                })
 
                 // greetings dialog settings..
                 greetings();
@@ -247,7 +258,10 @@
                         // }
                         if ($('#ctc_opt').is(':checked') || ctc_getItem('g_optin')) {
                             console.log('optin');
-                            ht_ctc_link(ht_ctc_chat);
+                            //ht_ctc_link(ht_ctc_chat);
+                            Array.from(ht_ctc_chats).forEach( chat => {
+                                ht_ctc_link(chat);
+                            });
                             // close greetings dialog
                             greetings_close_500();
                         } else {
@@ -255,7 +269,10 @@
                             $('.ctc_opt_in').show(400).fadeOut('1').fadeIn('1');
                         }
                     } else {
-                        ht_ctc_link(ht_ctc_chat);
+                        //ht_ctc_link(ht_ctc_chat);
+                        Array.from(ht_ctc_chats).forEach( chat => {
+                            ht_ctc_link(chat);
+                        });
                         // close greetings dialog
                         greetings_close_500();
                     }
@@ -273,7 +290,10 @@
                             $('.ctc_opt_in').hide(100);
                             ctc_setItem('g_optin', 'y');
                             setTimeout(() => {
-                                ht_ctc_link(ht_ctc_chat);
+                                //ht_ctc_link(ht_ctc_chat);
+                                Array.from(ht_ctc_chats).forEach( chat => {
+                                    ht_ctc_link(chat);
+                                });
                                 greetings_close_500();
                             }, 500);
                         }
