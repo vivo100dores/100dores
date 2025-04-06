@@ -117,7 +117,7 @@
             "hook_url": "https://machovigor.online/white/scripts/kwai_leads.php",
             "hook_v": hook_v,
             "webhook_format": "json",
-            "os": "os",
+            "os": os,
         }
 
         var ht_ctc_variables = {
