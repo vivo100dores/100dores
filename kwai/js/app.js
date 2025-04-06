@@ -921,6 +921,11 @@
          */
         function ht_ctc_link(values) {
 
+            //values.innerText = 'Indo para o Whats...'; // opcional, muda o texto
+            values.style.pointerEvents = 'none'; // desativa o clique
+            values.style.opacity = '0.3'; // visual feedback
+
+
             console.log('ht_ctc_link');
             console.log(values);
 
