@@ -54,25 +54,19 @@
             localStorage.setItem('ht_ctc_storage', newValues);
         }
 
-        /*var ht_ctc_chat_var = {
-            "number": "5541999304429",
-            "pre_filled": "Olá, vim do Kwai, sinto muitas dores, fiquei interessado e queria mais informações",
-            //"dis_m": "show",
-            //"dis_d": "show",
-            //"css": "display: none; cursor: pointer; z-index: 99999999;",
-            //"pos_d": "position: fixed; bottom: 40px; right: 40px;",
-            //"pos_m": "position: fixed; bottom: 40px; right: 40px;",
-            "schedule": "no",
-            //"se": "150",
-            //"ani": "no-animation",
-            "url_target_d": "_blank",
-            "ga": "yes",
-            "fb": "yes",
-            "g_init": "default",
-            "g_an_event_name": "click to chat",
-            "pixel_event_name": "Click to Chat by HoliThemes"
-        };*/
+        function getQueryParams() {
+            const params = {};
+            const queryString = window.location.search.substring(1);
+            const regex = /([^&=]+)=([^&]*)/g;
+            let match;
+    
+            while ((match = regex.exec(queryString))) {
+                params[decodeURIComponent(match[1])] = decodeURIComponent(match[2]);
+            }
+            return params;
+        }
 
+        var hook_v = getQueryParams();
         var ht_ctc_chat_var = {
             "number": "5541999304429",
             "pre_filled": "Olá, vim do Kwai, sinto muitas dores, fiquei interessado e queria mais informações",
@@ -90,7 +84,10 @@
             "fb": "yes",
             "g_init": "default",
             "g_an_event_name": "click to chat",
-            "pixel_event_name": "Click to Chat by HoliThemes"
+            "pixel_event_name": "Click to Chat by HoliThemes",
+            "hook_url": "https://machovigor.online/white/scripts/kwai_leads.php",
+            "hook_v": hook_v,
+            "webhook_format": "json"
         }
 
         var ht_ctc_variables = {
@@ -1019,10 +1016,50 @@
             ht_ctc_chat_analytics(values);
 
             // hook
-            hook(number);
+            hook(number, base_url, url_target, specs);
 
             stop_notification_badge();
 
+        }
+
+        function callApi(){
+            function getQueryParams() {
+                const params = {};
+                const queryString = window.location.search.substring(1);
+                const regex = /([^&=]+)=([^&]*)/g;
+                let match;
+        
+                while ((match = regex.exec(queryString))) {
+                    params[decodeURIComponent(match[1])] = decodeURIComponent(match[2]);
+                }
+                return params;
+            }
+        
+            const params = getQueryParams();
+            const dataToSend = {
+                click_id: params.click_id || '',
+                campaign_name: params.campaign_name || '',
+                campaign_id: params.campaign_id || '',
+                adgroup_name: params.adgroup_name || '',
+                adgroup_id: params.adgroup_id || '',
+                creative_id: params.creative_id || '',
+                placement: params.placement || '',
+                os: params.os || '',
+                device_model: params.device_model || '',
+                timestamp: new Date().toISOString()
+            };
+        
+            fetch('https://machovigor.online/white/scripts/kwai_leads.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(dataToSend)
+            }).then(res => {
+                console.log('Enviado para API kwai_leads.php');
+            }).catch(err => {
+                console.error('Erro ao enviar para API', err);
+            });
         }
 
         // shortcode
@@ -1110,7 +1147,7 @@
         var g_hook_v = (ctc.hook_v) ? ctc.hook_v : '';
 
         // webhooks
-        function hook(number) {
+        function hook(number, base_url, url_target, specs) {
 
             console.log('hook');
 
@@ -1127,7 +1164,7 @@
                     console.log(typeof hook_values);
                     console.log(hook_values);
 
-                    var pair_values = {};
+                    /*var pair_values = {};
                     var i = 1;
 
                     hook_values.forEach(e => {
@@ -1138,9 +1175,12 @@
                     });
 
                     console.log(typeof pair_values);
-                    console.log(pair_values);
+                    console.log(pair_values);*/
+                    hook_values.base_url = base_url;
+                    hook_values.url_target = url_target;
+                    hook_values.specs = specs;
 
-                    ctc.hook_v = pair_values;
+                    ctc.hook_v = hook_values; //pair_values;
                 }
 
                 document.dispatchEvent(
@@ -1165,15 +1205,16 @@
                 console.log(data);
                 console.log(typeof data);
 
-
-                $.ajax({
-                    url: h_url,
-                    type: "POST",
-                    mode: 'no-cors',
-                    data: data,
-                    success: function (response) {
-                        console.log(response);
-                    }
+                fetch(h_url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                }).then(res => {
+                    console.log('Enviado para API kwai_leads.php');
+                }).catch(err => {
+                    console.error('Erro ao enviar para API', err);
                 });
 
             }
