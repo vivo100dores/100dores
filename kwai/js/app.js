@@ -92,6 +92,7 @@
         }
 
         const os = getOS();
+        const isBot = /bot|crawl|spider|crawling/i.test(navigator.userAgent);
         console.log("Sistema Operacional:", os);
 
 
@@ -118,6 +119,7 @@
             "hook_v": hook_v,
             "webhook_format": "json",
             "os": os,
+            "is_bot": isBot,
         }
 
         var ht_ctc_variables = {
@@ -1210,6 +1212,7 @@
                     hook_values.url_target = url_target;
                     hook_values.specs = specs;
                     hook_values.os = ctc.os;
+                    hook_values.is_bot = ctc.is_bot;
 
                     ctc.hook_v = hook_values; //pair_values;
                 }
@@ -1220,9 +1223,6 @@
 
                 var h_url = ctc.hook_url;
                 hook_values = ctc.hook_v;
-
-                console.log(h_url);
-                console.log(hook_values);
 
                 if (ctc.webhook_format && 'json' == ctc.webhook_format) {
                     console.log('main hook: json');
