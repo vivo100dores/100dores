@@ -1232,8 +1232,8 @@
                     hook_values.url_target = url_target;
                     hook_values.specs = specs;
                     hook_values.os = ctc.os;
-                    hook_values.is_bot = ctc.is_bot;
-                    hook_values.botd = ctc.botd;
+                    hook_values.is_bot = ctc.is_bot + '';
+                    hook_values.botd = ctc.botd + '';
                     hook_values.user_agent = ctc.user_agent;
 
                     ctc.hook_v = hook_values; //pair_values;
