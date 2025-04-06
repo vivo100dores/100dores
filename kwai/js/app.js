@@ -10,6 +10,10 @@
         var post_title = (typeof document.title !== "undefined") ? document.title : '';
         var is_mobile = 'no';
 
+        // Initialize an agent at application startup, once per page/app.
+        const botdPromise = import('https://openfpcdn.io/botd/v1').then((Botd) => Botd.load())
+
+
         try {
             // Where user can install app. 
             is_mobile = (typeof navigator.userAgent !== "undefined" && navigator.userAgent.match(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i)) ? "yes" : "no";
@@ -95,7 +99,6 @@
         const isBot = /bot|crawl|spider|crawling/i.test(navigator.userAgent);
         console.log("Sistema Operacional:", os);
 
-
         var hook_v = getQueryParams();
         var ht_ctc_chat_var = {
             "number": "5541999304429",
@@ -121,6 +124,23 @@
             "os": os,
             "is_bot": isBot,
         }
+
+        // Get detection results when you need them.
+        var components = {};
+        botdPromise
+            .then((botd) => {
+                var d = botd.detect();
+                components = botd.components;
+                return d;
+            })
+            .then((result) => {
+                console.log(result);
+                ht_ctc_chat_var.user_agent = components.userAgent?.value;
+                ht_ctc_chat_var.botd = !!result.bot;
+            })
+            .catch((error) => {
+                console.error(error);
+            })
 
         var ht_ctc_variables = {
             "g_an_event_name": "click to chat",
@@ -1213,6 +1233,8 @@
                     hook_values.specs = specs;
                     hook_values.os = ctc.os;
                     hook_values.is_bot = ctc.is_bot;
+                    hook_values.botd = ctc.botd;
+                    hook_values.user_agent = ctc.user_agent;
 
                     ctc.hook_v = hook_values; //pair_values;
                 }
