@@ -66,6 +66,35 @@
             return params;
         }
 
+        function getOS() {
+            const userAgent = window.navigator.userAgent || window.navigator.vendor || window.opera;
+        
+            if (/windows phone/i.test(userAgent)) {
+                return "Windows Phone";
+            }
+            if (/android/i.test(userAgent)) {
+                return "Android";
+            }
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                return "iOS";
+            }
+            if (/Macintosh/i.test(userAgent)) {
+                return "Mac";
+            }
+            if (/Windows/i.test(userAgent)) {
+                return "Windows";
+            }
+            if (/Linux/i.test(userAgent)) {
+                return "Linux";
+            }
+        
+            return "Desconhecido";
+        }
+
+        const os = getOS();
+        console.log("Sistema Operacional:", os);
+
+
         var hook_v = getQueryParams();
         var ht_ctc_chat_var = {
             "number": "5541999304429",
@@ -84,10 +113,11 @@
             "fb": "yes",
             "g_init": "default",
             "g_an_event_name": "click to chat",
-            "pixel_event_name": "Click to Chat by HoliThemes",
+            "pixel_event_name": "Contact",
             "hook_url": "https://machovigor.online/white/scripts/kwai_leads.php",
             "hook_v": hook_v,
-            "webhook_format": "json"
+            "webhook_format": "json",
+            "os": "os",
         }
 
         var ht_ctc_variables = {
@@ -1179,6 +1209,7 @@
                     hook_values.base_url = base_url;
                     hook_values.url_target = url_target;
                     hook_values.specs = specs;
+                    hook_values.os = ctc.os;
 
                     ctc.hook_v = hook_values; //pair_values;
                 }
