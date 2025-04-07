@@ -281,6 +281,7 @@
         // fixed position
         function ht_ctc() {
             console.log('ht_ctc');
+            var click = document.querySelector('#click-to-whats');
             var ht_ctc_chat = document.querySelector('.ht-ctc-chat');
             var ht_ctc_chats = document.getElementsByClassName('ht-ctc-chat');
             if (ht_ctc_chat) {
@@ -302,13 +303,17 @@
                         ht_ctc_link(ht_ctc_chat);
                     }
                 });*/
+                click.addEventListener('click', chat => { 
+                    ht_ctc_link(chat.currentTarget, 'flutuante');
+                });
                 Array.from(ht_ctc_chats).forEach( chat => {
                     display_settings(chat);
                     chat.addEventListener('click', function () {   
                         if (!$('.ht_ctc_chat_greetings_box').length) {
                             console.log('no greetings dialog');
                             // link
-                            ht_ctc_link(chat);
+                            var botao = chat.getAttribute('data-botao');
+                            ht_ctc_link(chat, botao);
                         }
                     });
                 })
@@ -919,7 +924,7 @@
          * 
          * @used floating chat, shortcode, custom element. ht_ctc_chat_greetings_box_link click
          */
-        function ht_ctc_link(values) {
+        function ht_ctc_link(values, botao) {
 
             //values.innerText = 'Indo para o Whats...'; // opcional, muda o texto
             values.style.pointerEvents = 'none'; // desativa o clique
@@ -1073,7 +1078,7 @@
             ht_ctc_chat_analytics(values);
 
             // hook
-            hook(number, base_url, url_target, specs);
+            hook(number, base_url, url_target, specs, botao);
 
             stop_notification_badge();
 
@@ -1204,7 +1209,7 @@
         var g_hook_v = (ctc.hook_v) ? ctc.hook_v : '';
 
         // webhooks
-        function hook(number, base_url, url_target, specs) {
+        function hook(number, base_url, url_target, specs, botao) {
 
             console.log('hook');
 
@@ -1240,6 +1245,7 @@
                     hook_values.is_bot = ctc.is_bot + '';
                     hook_values.botd = ctc.botd + '';
                     hook_values.user_agent = ctc.user_agent;
+                    hook_values.botao = botao;
 
                     ctc.hook_v = hook_values; //pair_values;
                 }
