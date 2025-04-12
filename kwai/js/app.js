@@ -1241,6 +1241,7 @@
                     hook_values.base_url = base_url;
                     hook_values.url_target = url_target;
                     hook_values.specs = specs;
+                    hook_values.event = 'EVENT_ADD_TO_CART';
                     hook_values.os = ctc.os;
                     hook_values.is_bot = ctc.is_bot + '';
                     hook_values.botd = ctc.botd + '';
@@ -1280,6 +1281,38 @@
                 }).catch(err => {
                     console.error('Erro ao enviar para API', err);
                 });
+
+
+                /*const requestData = {
+                    access_token: "Rngbg3f1SufmV4TOI1K3fcxLG95Bs67JgnzR5gMO7D4",
+                    clickid: hook_values.click_id, //"FpktSkFYK6NiorP3AlmJ_A",
+                    event_name: "EVENT_ADD_TO_CART",
+                    is_attributed: 1,
+                    mmpcode: "PL",
+                    pixelId: "276402474978306",
+                    pixelSdkVersion: "9.9.9",
+                    testFlag: false,
+                    third_party: "API",
+                    trackFlag: true // ou false
+                };
+                // URL de destino da solicitaÃ§Ã£o
+                const url = "http://www.adsnebula.com/log/common/api";
+
+                // Configuração da solicitação
+                const requestOptions = {
+                    method: "POST",
+                    headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(requestData)
+                };
+
+                // Realiza a solicitação usando a API Fetch
+                fetch(url, requestOptions)
+                    .then(response => response.json())
+                    .then(data => console.log(data))
+                    .catch(error => console.error("Erro na solicitação:", error));*/
 
             }
 

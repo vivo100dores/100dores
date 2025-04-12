@@ -1,0 +1,7 @@
+th {
+    cursor: pointer;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+}

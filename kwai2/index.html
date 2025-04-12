@@ -1408,7 +1408,7 @@
                     <div class="elementor-element elementor-element-a90c45b elementor-widget elementor-widget-shortcode" data-id="a90c45b" data-element_type="widget" data-settings="{&quot;_animation_mobile&quot;:&quot;fadeIn&quot;}" data-widget_type="shortcode.default">
                         <div class="elementor-widget-container">
                             <div class="elementor-shortcode">
-                                <div data-pre_filled="Olá, gostaria de mais informações sobre o produto." data-style="2" style="display: inline; cursor: pointer; z-index: 99999999; " class="ht-ctc-sc ht-ctc-sc-chat sc-style-2 ht-ctc-inline">
+                                <div data-botao="principal" data-pre_filled="Olá, gostaria de mais informações sobre o produto." data-style="2" style="display: inline; cursor: pointer; z-index: 99999999; " class="ht-ctc-sc ht-ctc-sc-chat sc-style-2 ht-ctc-inline">
                                     <img decoding="async" class="img-icon ctc-analytics ctc_cta" title="Saiba mais" style="height: 100px;" src="/kwai2/wp-content/plugins/click-to-chat-for-whatsapp/./new/inc/assets/img/whatsapp-icon-square.svg" alt="Saiba mais">
                                 </div>
                             </div>
@@ -1439,21 +1439,7 @@
                 </div>
                 <div class="elementor-element elementor-element-bcddee1 elementor-widget elementor-widget-text-editor" data-id="bcddee1" data-element_type="widget" data-widget_type="text-editor.default">
                     <div class="elementor-widget-container">
-                        <p>Com duração <br />de 5 meses<br />45% DE DESCONTO</p>
-                    </div>
-                </div>
-                <div class="elementor-element elementor-element-bb8c712 e-con-full e-flex e-con e-child" data-id="bb8c712" data-element_type="container">
-                    <div class="elementor-element elementor-element-805164f elementor-align-center elementor-mobile-align-center bt_pulsar elementor-widget elementor-widget-button" data-id="805164f" data-element_type="widget" data-settings="{&quot;_animation_tablet&quot;:&quot;bounceIn&quot;,&quot;_animation_mobile&quot;:&quot;bounceIn&quot;}"
-                        data-widget_type="button.default">
-                        <div class="elementor-widget-container">
-                            <div class="elementor-button-wrapper">
-                                <a class="elementor-button elementor-button-link elementor-size-sm" href="https://seguro.payt.com.br/a/NLwW1KVNTYppoPBp">
-						<span class="elementor-button-content-wrapper">
-									<span class="elementor-button-text">COMPRAR AGORA</span>
-					</span>
-					</a>
-                            </div>
-                        </div>
+                        <p style="color: aliceblue;">20% DE DESCONTO  <br />SOMENTE AGORA  <br />E VOCÊ GANHA   <br />FRETE GRÁTIS  <br />APROVEITE</p>
                     </div>
                 </div>
             </div>
@@ -1774,7 +1760,7 @@
             var i = 0, qtd = nome.length;
             setInterval(function doThis() {
                 if (i == 11) return; // somente 11 eventos serão disparados
-                var div = ' <div class="ht-ctc-sc ht-ctc-sc-chat">A dona ' + nome[i++] + ' acabou de reservar o tratamento dela</div>'
+                var div = ' <div data-botao="toast" class="ht-ctc-sc ht-ctc-sc-chat">A dona ' + nome[i++] + ' acabou de reservar o tratamento dela</div>'
                 toastr.info(div, {
                     timeOut: 5000,
                     positionClass: "bottom-left",
