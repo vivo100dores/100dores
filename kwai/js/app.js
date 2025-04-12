@@ -303,9 +303,11 @@
                         ht_ctc_link(ht_ctc_chat);
                     }
                 });*/
-                click.addEventListener('click', chat => { 
-                    ht_ctc_link(chat.currentTarget, 'flutuante');
-                });
+                if (click) {
+                    click.addEventListener('click', chat => { 
+                        ht_ctc_link(chat.currentTarget, 'flutuante');
+                    });
+                }
                 Array.from(ht_ctc_chats).forEach( chat => {
                     display_settings(chat);
                     chat.addEventListener('click', function () {   
