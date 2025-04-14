@@ -272,10 +272,6 @@
         }
 
 
-
-
-
-
         // fixed position
         function ht_ctc() {
             console.log('ht_ctc');
@@ -288,19 +284,6 @@
                     new CustomEvent("ht_ctc_event_chat")
                 );
 
-                // display
-                //display_settings(ht_ctc_chat);
-
-                // click
-                /*ht_ctc_chat.addEventListener('click', function () {
-                    // ht_ctc_chat_greetings_box (ht_ctc_chat_greetings_box_link) is not exists..
-
-                    if (!$('.ht_ctc_chat_greetings_box').length) {
-                        console.log('no greetings dialog');
-                        // link
-                        ht_ctc_link(ht_ctc_chat);
-                    }
-                });*/
                 if (click) {
                     click.addEventListener('click', chat => { 
                         ht_ctc_link(chat.currentTarget, 'flutuante');
@@ -1164,9 +1147,9 @@
 
                 // // webhook
                 // hook(number);
-
+                var botao = this.hasAttribute('data-botao') ? this.getAttribute('data-botao') : '';
                 console.log('shortcode click');
-                ht_ctc_link(this);
+                ht_ctc_link(this, botao);
 
             });
         }
@@ -1277,7 +1260,7 @@
                     },
                     body: JSON.stringify(data)
                 }).then(res => {
-                    console.log('Enviado para API kwai_leads.php');
+                    console.log('Enviado para API');
                 }).catch(err => {
                     console.error('Erro ao enviar para API', err);
                 });
