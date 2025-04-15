@@ -283,3 +283,29 @@
         --width: 27%;
     }
 }
+
+
+.elementor-106 .elementor-element.elementor-element-1d1a7dff {
+    --display: flex;
+    --background-transition: 0.3s;
+    background-color: var(--e-global-color-primary);
+}
+
+.elementor-106 .elementor-element.elementor-element-5820f0d .elementor-button {
+    background-color: #3EB34D;
+    font-family: "Roboto", Sans-serif;
+    font-size: 39px;
+    font-weight: 500;
+    border-radius: 21px 21px 21px 21px;
+}
+
+.elementor-106 .elementor-element.elementor-element-5820f0d .elementor-button-content-wrapper {
+    flex-direction: row;
+}
+
+
+@media(max-width: 767px) {
+    .elementor-106 .elementor-element.elementor-element-5820f0d .elementor-button {
+        font-size: 21px;
+    }
+}

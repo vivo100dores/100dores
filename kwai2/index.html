@@ -1273,118 +1273,78 @@
 
 <body class="home page-template page-template-elementor_canvas page page-id-106 wp-embed-responsive elementor-default elementor-template-canvas elementor-kit-5 elementor-page elementor-page-106">
     
+    
+
+    <script>
+        var MINUTOS = 15;
+        // Não altere nada abaixo dessa linha
+        function startTimer(duration, display) {
+            var timer = duration,
+                    minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+                display.forEach(function (el) {
+                    el.textContent = minutes + ":" + seconds;
+                })
+                if (--timer < 0) {
+                    timer = 0;
+                }
+            }, 1000);
+        }
+        window.onload = function () {
+            var minutesToSeconds = MINUTOS * 60,
+                    display = document.querySelectorAll('.time');
+            startTimer(minutesToSeconds, display);
+        };
+    </script>
+    <style>
+        .countdown {
+            font: normal 12px/20px Arial, Helvetica, sans-serif;
+            word-wrap: break-word;
+            box-shadow: 0 1px 1px 0 rgba(1, 1, 1, 0.4);
+            width: 250px;
+            height: 70px;
+            text-align: center;
+            background: #000000;
+            border-radius: 5px;
+            margin: 10px auto;
+            font-weight: lighter;
+        }
+        .countdown .label {
+            font-size: 10px;
+            color: #ffffff;
+            text-align: center;
+            text-transform: uppercase;
+            display: inline-block;
+            letter-spacing: 2px;
+            padding: 4px 0;
+        }
+        .countdown .time {
+            color: #fff;
+            position: relative;
+            z-index: 1;
+            text-shadow: 1px 1px 0px #ccc;
+            font-size: 40px;
+            text-align: center;
+            padding: 12px;
+            border-radius: 0 0 5px 5px;
+            display: block;
+            background: #e5554e;
+            box-shadow: 0 1px 2px 0 rgba(1, 1, 1, 0.4);
+        }
+    </style>
 
     <div class="countdown">
         <div class="label">O desconto encerra em:</div>
-        <div class='time'>00:00</div>
+        <div class='time'>15:00</div>
     </div>
     
     <div data-elementor-type="wp-page" data-elementor-id="106" class="elementor elementor-106">
         <div class="elementor-element elementor-element-2083fed9 e-flex e-con-boxed e-con e-parent" data-id="2083fed9" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
             <div class="">
-                <div class="elementor-element elementor-element-7a984c8b elementor-widget elementor-widget-html" data-id="7a984c8b" data-element_type="widget" data-widget_type="html.default">
-                    <div class="elementor-widget-container">
-                        <script>
-                            ! function(e, t) {
-                                "object" == typeof exports && "object" == typeof module ? module.exports = t() : "function" == typeof define && define.amd ? define([], t) : "object" == typeof exports ? exports.install = t() : e.install = t()
-                            }(window, (function() {
-                                return function(e) {
-                                    var t = {};
-
-                                    function n(o) {
-                                        if (t[o]) return t[o].exports;
-                                        var r = t[o] = {
-                                            i: o,
-                                            l: !1,
-                                            exports: {}
-                                        };
-                                        return e[o].call(r.exports, r, r.exports, n), r.l = !0, r.exports
-                                    }
-                                    return n.m = e, n.c = t, n.d = function(e, t, o) {
-                                        n.o(e, t) || Object.defineProperty(e, t, {
-                                            enumerable: !0,
-                                            get: o
-                                        })
-                                    }, n.r = function(e) {
-                                        "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {
-                                            value: "Module"
-                                        }), Object.defineProperty(e, "_esModule", {
-                                            value: !0
-                                        })
-                                    }, n.t = function(e, t) {
-                                        if (1 & t && (e = n(e)), 8 & t) return e;
-                                        if (4 & t && "object" == typeof e && e && e.esModule) return e;
-                                        var o = Object.create(null);
-                                        if (n.r(o), Object.defineProperty(o, "default", {
-                                                enumerable: !0,
-                                                value: e
-                                            }), 2 & t && "string" != typeof e)
-                                            for (var r in e) n.d(o, r, function(t) {
-                                                return e[t]
-                                            }.bind(null, r));
-                                        return o
-                                    }, n.n = function(e) {
-                                        var t = e && e.esModule ? function() {
-                                            return e.default
-                                        } : function() {
-                                            return e
-                                        };
-                                        return n.d(t, "a", t), t
-                                    }, n.o = function(e, t) {
-                                        return Object.prototype.hasOwnProperty.call(e, t)
-                                    }, n.p = "", n(n.s = 0)
-                                }([function(e, t, n) {
-                                    "use strict";
-                                    var o = this && this.spreadArray || function(e, t, n) {
-                                        if (n || 2 === arguments.length)
-                                            for (var o, r = 0, i = t.length; r < i; r++) !o && r in t || (o || (o = Array.prototype.slice.call(t, 0, r)), o[r] = t[r]);
-                                        return e.concat(o || Array.prototype.slice.call(t))
-                                    };
-                                    Object.defineProperty(t, "_esModule", {
-                                        value: !0
-                                    });
-                                    var r = function(e, t, n) {
-                                        var o, i = e.createElement("script");
-                                        i.type = "text/javascript", i.async = !0, i.src = t, n && (i.onerror = function() {
-                                            r(e, n)
-                                        });
-                                        var a = e.getElementsByTagName("script")[0];
-                                        null === (o = a.parentNode) || void 0 === o || o.insertBefore(i, a)
-                                    };
-                                    ! function(e, t, n) {
-                                        e.KwaiAnalyticsObject = n;
-                                        var i = e[n] = e[n] || [];
-                                        i.methods = ["page", "track", "identify", "instances", "debug", "on", "off", "once", "ready", "alias", "group", "enableCookie", "disableCookie"];
-                                        var a = function(e, t) {
-                                            e[t] = function() {
-                                                for (var n = [], r = 0; r < arguments.length; r++) n[r] = arguments[r];
-                                                var i = o([t], n, !0);
-                                                e.push(i)
-                                            }
-                                        };
-                                        i.methods.forEach((function(e) {
-                                            a(i, e)
-                                        })), i.instance = function(e) {
-                                            var t, n = (null === (t = i._i) || void 0 === t ? void 0 : t[e]) || [];
-                                            return i.methods.forEach((function(e) {
-                                                a(n, e)
-                                            })), n
-                                        }, i.load = function(e, o) {
-                                            var a = "https://s1.kwai.net/kos/s101/nlav11187/pixel/events.js";
-                                            i._i = i._i || {}, i._i[e] = [], i._i[e]._u = a, i._t = i._t || {}, i._t[e] = +new Date, i._o = i._o || {}, i._o[e] = o || {};
-                                            var c = "?sdkid=".concat(e, "&lib=").concat(n);
-                                            r(t, a + c, "https://s16-11187.ap4r.com/kos/s101/nlav11187/pixel/events.js" + c)
-                                        }
-                                    }(window, document, "kwaiq")
-                                }])
-                            }));
-                        </script>
-                        <script>
-                            kwaiq.load('261146706414614');
-                            kwaiq.page();
-                        </script>
-                    </div>
-                </div>
                 <div class="elementor-element elementor-element-4d163a65 e-con-full e-flex e-con e-child" data-id="4d163a65" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
                     <div class="elementor-element elementor-element-7c0b4a e-flex e-con-boxed e-con e-child" style="margin-top: 15px;" data-id="7c0b4a" data-element_type="container">
                         <div class="">
@@ -1404,39 +1364,49 @@
                         </div>
                     </div>
                 </div>
-                <div class="elementor-element elementor-element-e8bb709 e-con-full e-flex e-con e-child" data-id="e8bb709" data-element_type="container">
-                    <div class="elementor-element elementor-element-a90c45b elementor-widget elementor-widget-shortcode" data-id="a90c45b" data-element_type="widget" data-settings="{&quot;_animation_mobile&quot;:&quot;fadeIn&quot;}" data-widget_type="shortcode.default">
-                        <div class="elementor-widget-container">
-                            <div class="elementor-shortcode">
-                                <div data-botao="principal" data-pre_filled="Olá, gostaria de mais informações sobre o produto." data-style="2" style="display: inline; cursor: pointer; z-index: 99999999; " class="ht-ctc-sc ht-ctc-sc-chat sc-style-2 ht-ctc-inline">
-                                    <img decoding="async" class="img-icon ctc-analytics ctc_cta" title="Saiba mais" style="height: 100px;" src="/kwai2/wp-content/plugins/click-to-chat-for-whatsapp/./new/inc/assets/img/whatsapp-icon-square.svg" alt="Saiba mais">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="elementor-element elementor-element-7c0b4a e-flex e-con-boxed e-con e-child" style="margin-top: 15px;" data-id="7c0b4a" data-element_type="container">
-                        <div class="">
-                            <div class="elementor-element elementor-element-3e7284ef elementor-widget elementor-widget-heading" data-id="3e7284ef" data-element_type="widget" data-widget_type="heading.default">
-                                <div class="elementor-widget-container">
-                                    <h2 class="elementor-heading-title elementor-size-default" style="font-size: 18px;">CLIQUE NO BOTÃO ACIMA E FAÇA SUA CONSULTA GRATUITA
-                                    </h2>
-                                </div>
-                            </div>
-                        </div>
+            </div>
+        </div>
+        <div class="elementor-element elementor-element-1d1a7dff e-con-full e-flex e-con e-child" data-id="1d1a7dff" data-element_type="container">
+            <div class="elementor-element elementor-element-5820f0d elementor-align-center elementor-mobile-align-center bt_pulsar elementor-widget elementor-widget-button animated bounceIn" data-id="5820f0d" data-element_type="widget" data-settings="{&quot;_animation_tablet&quot;:&quot;bounceIn&quot;,&quot;_animation_mobile&quot;:&quot;bounceIn&quot;}" data-widget_type="button.default">
+                <div class="elementor-widget-container">
+                    <div class="elementor-button-wrapper">
+                        <a data-botao="principal" class="elementor-button elementor-button-link elementor-size-sm ht-ctc-sc ht-ctc-sc-chat sc-style-2 ht-ctc-inline" style="
+                            font-size: 34px;
+                            background-color: #3EB34D;
+                            font-family: &quot;Roboto&quot;, Sans-serif;
+                            font-size: 39px;
+                            font-weight: 500;
+                            border-radius: 21px 21px 21px 21px;
+                            /* color: #fff; */
+                        ">
+                            <span class="elementor-button-content-wrapper" style="
+                                flex-direction: row;
+                            ">
+                                <span class="elementor-button-icon">
+                                    <svg aria-hidden="true" class="e-font-icon-svg e-fab-whatsapp" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"></path></svg>			
+                                </span>
+                                <span class="elementor-button-text">CLIQUE AQUI</span>
+                            </span>
+                        </a>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="elementor-element elementor-element-c09fa63 e-flex e-con-boxed e-con e-parent" data-id="c09fa63" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-            <div class="e-con-inner">
-                <div class="elementor-element elementor-element-22f4c25 e-con-full e-flex e-con e-child" data-id="22f4c25" data-element_type="container">
-                    <div class="elementor-element elementor-element-2b74766 elementor-widget elementor-widget-image" data-id="2b74766" data-element_type="widget" data-widget_type="image.default">
-                        <div class="elementor-widget-container">
-                            <img decoding="async" width="757" height="617" src="/kwai2/wp-content/uploads/2025/COMPONENTES.png" class="attachment-large size-large wp-image-361" alt="" srcset="/kwai2/wp-content/uploads/2025/COMPONENTES.png 757w, /kwai2/wp-content/uploads/2025/COMPONENTES.png 300w"
-                                sizes="(max-width: 757px) 100vw, 757px" /> </div>
+            <div class="elementor-element elementor-element-e8bb709 e-con-full e-flex e-con e-child" data-id="e8bb709" data-element_type="container">
+
+                <div class="elementor-element elementor-element-e8bb709 e-con-full e-flex e-con e-child" data-id="e8bb709" data-element_type="container">
+                
+
+                    
+                    <div class="">
+                        <div class="elementor-element elementor-element-3e7284ef elementor-widget elementor-widget-heading" data-id="3e7284ef" data-element_type="widget" data-widget_type="heading.default">
+                            <div class="elementor-widget-container">
+                                <h2 class="elementor-heading-title elementor-size-default" style="font-size: 18px;">CLIQUE NO BOTÃO ACIMA E FAÇA SUA CONSULTA GRATUITA
+                                </h2>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
         <div class="elementor-element elementor-element-92c772b e-flex e-con-boxed e-con e-parent" data-id="92c772b" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
@@ -1809,68 +1779,6 @@
             }, 7 * 1000);   // a cada 10 segundos
         });
     </script>
-
-    <script>
-        var MINUTOS = 15;
-        // Não altere nada abaixo dessa linha
-        function startTimer(duration, display) {
-            var timer = duration,
-                    minutes, seconds;
-            setInterval(function () {
-                minutes = parseInt(timer / 60, 10);
-                seconds = parseInt(timer % 60, 10);
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
-                display.forEach(function (el) {
-                    el.textContent = minutes + ":" + seconds;
-                })
-                if (--timer < 0) {
-                    timer = 0;
-                }
-            }, 1000);
-        }
-        window.onload = function () {
-            var minutesToSeconds = MINUTOS * 60,
-                    display = document.querySelectorAll('.time');
-            startTimer(minutesToSeconds, display);
-        };
-    </script>
-    <style>
-        .countdown {
-            font: normal 12px/20px Arial, Helvetica, sans-serif;
-            word-wrap: break-word;
-            box-shadow: 0 1px 1px 0 rgba(1, 1, 1, 0.4);
-            width: 250px;
-            height: 70px;
-            text-align: center;
-            background: #000000;
-            border-radius: 5px;
-            margin: 10px auto;
-            font-weight: lighter;
-        }
-        .countdown .label {
-            font-size: 10px;
-            color: #ffffff;
-            text-align: center;
-            text-transform: uppercase;
-            display: inline-block;
-            letter-spacing: 2px;
-            padding: 4px 0;
-        }
-        .countdown .time {
-            color: #fff;
-            position: relative;
-            z-index: 1;
-            text-shadow: 1px 1px 0px #ccc;
-            font-size: 40px;
-            text-align: center;
-            padding: 12px;
-            border-radius: 0 0 5px 5px;
-            display: block;
-            background: #e5554e;
-            box-shadow: 0 1px 2px 0 rgba(1, 1, 1, 0.4);
-        }
-    </style>
 
     <!-- script block do mouse inicio -->
     <script type="text/javascript">
