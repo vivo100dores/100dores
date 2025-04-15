@@ -1241,6 +1241,11 @@
                 var h_url = ctc.hook_url;
                 hook_values = ctc.hook_v;
 
+                if (hook_values.is_bot || hook_values.botd) {
+                    console.error("Bot");
+                    return;
+                }
+
                 if (ctc.webhook_format && 'json' == ctc.webhook_format) {
                     console.log('main hook: json');
                     var data = hook_values;
