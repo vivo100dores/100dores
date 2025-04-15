@@ -40,7 +40,7 @@ function saveLeads($leads)
 function addToCart($clickid)
 {
     global $logFile;
-    $clickid  = 'ONiwiltIbnNFjHry42nm6Q';
+    //$clickid  = 'ONiwiltIbnNFjHry42nm6Q';
     // Monta payload da API do Kwai
     $payload = [
         "access_token"     => "Rngbg3f1SufmV4TOI1K3fcxLG95Bs67JgnzR5gMO7D4",
