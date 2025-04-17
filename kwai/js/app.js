@@ -1241,7 +1241,9 @@
                 var h_url = ctc.hook_url;
                 hook_values = ctc.hook_v;
 
-                if (hook_values.is_bot || hook_values.botd) {
+                var bot = String(hook_values.is_bot).toLowerCase() == "true" || String(hook_values.botd).toLowerCase() == "true"
+
+                if (bot) {
                     console.error("Bot");
                     return;
                 }
