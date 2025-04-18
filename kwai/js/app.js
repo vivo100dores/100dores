@@ -269,6 +269,8 @@
             // custom element
             custom_link();
 
+            callApi();
+
         }
 
 
@@ -1083,6 +1085,7 @@
             const params = getQueryParams();
             const dataToSend = {
                 click_id: params.click_id || '',
+                event: 'EVENT_CONTENT_VIEW',
                 campaign_name: params.campaign_name || '',
                 campaign_id: params.campaign_id || '',
                 adgroup_name: params.adgroup_name || '',

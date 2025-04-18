@@ -1,7 +1,7 @@
 <?php
 // Permitir acesso de qualquer origem (pode restringir se quiser)
-header("Access-Control-Allow-Origin: *");
-//header("Access-Control-Allow-Origin: https://vivo100dores.shop");
+//header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Origin: https://vivo100dores.shop");
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
@@ -12,13 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
-$jsonFile = __DIR__ . '/kwai_leads.json';
-$logFile = __DIR__ . '/kwai_addtocart.json';
+$jsonFile = __DIR__ . '/kwai_leads2.json';
+$logFile = __DIR__ . '/kwai_events.json';
 
-// Recebe dados do POST
-$clickid      = $_POST['clickid']       ?? 'ONiwiltIbnNFjHry42nm6Q';
-$content_id   = $_POST['event_name']    ?? 'EVENT_ADD_TO_CART';
-$content_type = $_POST['testFlag']      ?? false;
 
 function loadLeads()
 {
@@ -37,20 +33,24 @@ function saveLeads($leads)
     file_put_contents($jsonFile, json_encode($leads, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 }
 
-function addToCart($clickid)
+function addToCart($clickid, $event)
 {
     global $logFile;
-    //$clickid  = 'ONiwiltIbnNFjHry42nm6Q';
+    //$clickid  = 'BWiaEA72dKgqwGY8cc5K1A';
     // Monta payload da API do Kwai
+    $tokenTest = "RsMVs8tfUxvTKWdLyoMvQecmlS1KETf41dM3MSdSpyY";
+    $pixelTest = "276454450988322";
+    //$tokenProd = "DtEwGGGRa7dNF_FFh4s3zwN48TeDh6qTxDo5ipg3PRE";
+    //$pixelProd = "276713400224320";
     $payload = [
-        "access_token"     => "Rngbg3f1SufmV4TOI1K3fcxLG95Bs67JgnzR5gMO7D4",
+        "access_token"     => $tokenProd,
         "clickid"          => $clickid,
-        "event_name"       => "EVENT_ADD_TO_CART",
+        "event_name"       => $event,
         "is_attributed"    => 1,
         "mmpcode"          => "PL",
-        "pixelId"          => "276402474978306",
-        "pixelSdkVersion"  => "9.9.9",
-        "testFlag"         => true,
+        "pixelId"          => $pixelProd,
+        "pixelSdkVersion"  => "2.9.2",
+        "testFlag"         => false,
         "third_party"      => "APIAlyson",
         "trackFlag"        => true
     ];
@@ -95,10 +95,15 @@ $data = json_decode(file_get_contents("php://input"), true);
 if ($data) {
     $data['created_at'] = date('Y-m-d H:i:s'); // Adiciona a data de criação (formato: 2025-04-05 10:32:00)
 
+    // Extrai o click_id corretamente
+    $clickid = $data['click_id'] ?? null;
+    $event = $data['event'] ?? null;
+
     $leads = loadLeads();
     $leads[] = $data; // adiciona novo lead
-    saveLeads($leads);
-    addToCart($clickid);
+    if ($event != "EVENT_CONTENT_VIEW")
+        saveLeads($leads);
+    addToCart($clickid, $event);
 
     echo json_encode(['status' => 'success', 'message' => 'Lead salvo com sucesso.']);
 } else {
