@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Obrigado!</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css">
+<style>
+body { font-family: sans-serif; text-align: center; padding: 20px; background-color: #f4f4f4; }
+h1 { color: #28a745; }
+p { color: #666; }
+#loading { display: none; margin-top: 20px; }
+#loading.active { display: block; }
+.emoji { font-size: 2em; }
+</style>
+</head>
+<body>
+
+<h1>Obrigado pela sua compra! <span class="emoji">🎉</span></h1>
+<p>Estamos processando seu pedido. Em breve, você receberá mais informações.</p>
+
+<div id="loading">
+  <i class="mdi mdi-loading mdi-spin" style="font-size: 3em;"></i>
+  <p>Enviando dados...</p>
+</div>
+
+<script>
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+function getQueryParam(name) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(name);
+}
+
+async function sendData() {
+  document.getElementById('loading').classList.add('active');
+
+  const data = {
+    fbc: getCookie('_fbc'),
+    fbp: getCookie('_fbp'),
+    ip_address: null,
+    user_agent: navigator.userAgent,
+    language: navigator.language,
+    screen_width: screen.width,
+    screen_height: screen.height,
+    device_memory: navigator.deviceMemory,
+    hardware_concurrency: navigator.hardwareConcurrency,
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    timestamp: new Date().toISOString(),
+    name: getQueryParam('name'), // Adiciona o nome do query param
+    phone: getQueryParam('phone'),  // Adiciona o telefone do query param
+    product: getQueryParam('product'),  // Adiciona o produto do query param
+    treatment: getQueryParam('treatment'),  // Adiciona o tratamento do query param
+    value: getQueryParam('value'),  // Adiciona o tratamento do query param
+  };
+
+  try {
+    const ipResponse = await fetch('https://api.ipify.org?format=json');
+    const ipData = await ipResponse.json();
+    data.ip_address = ipData.ip;
+
+    const response = await fetch('https://machovigor.online/white/scripts/captureData.php', { // Replace with your backend endpoint
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+      console.log('Data sent successfully!');
+      document.getElementById('loading').innerHTML = '<p>Compra realizada com sucesso!</p>';
+    } else {
+      console.error('Failed to send data:', response.status);
+      document.getElementById('loading').innerHTML = '<p>Compra realizada com sucesso!</p>';
+    }
+  } catch (error) {
+    console.error('Error sending data:', error);
+    document.getElementById('loading').innerHTML = '<p>Erro ao enviar os dados.</p>';
+  } finally {
+    // You can optionally redirect the user after sending the data
+    // window.location.href = "https://seu-site.com/pagina-final";
+  }
+}
+
+window.onload = sendData;
+</script>
+
+</body>
+</html>
